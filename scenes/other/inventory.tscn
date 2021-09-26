@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/inventory.gd" type="Script" id=1]
+
+[node name="inventory" type="ItemList" groups=[
+"inv",
+]]
+margin_right = 479.0
+margin_bottom = 354.0
+rect_pivot_offset = Vector2( 170, -138 )
+allow_rmb_select = true
+icon_scale = 3.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+itself = "none"
+place = "none"
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+margin_left = 211.0
+margin_top = 110.0
+margin_right = 294.0
+margin_bottom = 189.0
+[connection signal="item_selected" from="." to="." method="_on_inventory_item_selected"]
+[connection signal="index_pressed" from="PopupMenu" to="." method="_on_PopupMenu_index_pressed"]
+[connection signal="popup_hide" from="PopupMenu" to="." method="_on_PopupMenu_popup_hide"]

@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/ship_frag.gd" type="Script" id=1]
+[ext_resource path="res://sprites/space_ship_fragm.png" type="Texture" id=2]
+[ext_resource path="res://sprites/iskorka.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10.4942, 10.2435 )
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.459259, 1 )
+colors = PoolColorArray( 1, 0.0878906, 0, 1, 0.825195, 0.718734, 0.251427, 1, 0.325195, 0.325195, 0.325195, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 1
+emission_sphere_radius = 10.0
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 15.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+direction = Vector3( 1, 1, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 200.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 281.4
+angle_random = 1.0
+scale_random = 1.0
+
+[node name="ship_frag" type="StaticBody2D"]
+show_behind_parent = true
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1.28976, 3.77007 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+amount = 100
+process_material = SubResource( 4 )
+
+[node name="iskri" type="Particles2D" parent="."]
+visible = false
+emitting = false
+amount = 1
+lifetime = 0.1
+speed_scale = 0.31
+process_material = SubResource( 5 )
+texture = ExtResource( 3 )

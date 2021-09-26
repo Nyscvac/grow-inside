@@ -1,0 +1,187 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://kongtext.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scenes/other/inventory.tscn" type="PackedScene" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[node name="tab_menu" type="Panel"]
+visible = false
+anchor_left = -0.007
+anchor_right = 0.982
+anchor_bottom = 1.0
+margin_left = 0.993829
+margin_right = 17.2797
+margin_bottom = 5.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="inventory" parent="." instance=ExtResource( 3 )]
+margin_left = 420.0
+margin_top = 18.0
+margin_right = 997.0
+margin_bottom = 583.0
+max_columns = 10
+place = "player"
+
+[node name="wep_slot1" type="Panel" parent="."]
+self_modulate = Color( 0.549664, 0.549664, 0.549664, 1 )
+margin_left = 31.0
+margin_top = 33.0
+margin_right = 219.0
+margin_bottom = 110.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon1" type="TextureRect" parent="wep_slot1"]
+anchor_right = 0.452
+margin_left = 44.0
+margin_top = -3.0
+margin_right = -8.976
+margin_bottom = 24.0
+rect_scale = Vector2( 3, 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="wep_slot2" type="Panel" parent="."]
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
+margin_left = 31.0
+margin_top = 128.0
+margin_right = 219.0
+margin_bottom = 205.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon2" type="TextureRect" parent="wep_slot2"]
+margin_left = 46.0
+margin_right = 93.0
+margin_bottom = 26.0
+rect_scale = Vector2( 3, 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="acc_slot1" type="Panel" parent="."]
+modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
+margin_left = 31.0
+margin_top = 278.0
+margin_right = 115.0
+margin_bottom = 355.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon1" type="TextureRect" parent="acc_slot1"]
+margin_right = 84.0
+margin_bottom = 77.0
+
+[node name="acc_slot2" type="Panel" parent="."]
+modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
+margin_left = 31.0
+margin_top = 370.631
+margin_right = 115.0
+margin_bottom = 447.631
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon2" type="TextureRect" parent="acc_slot2"]
+margin_left = 94.0
+margin_top = -93.0
+margin_right = 178.0
+margin_bottom = -16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="acc_slot3" type="Panel" parent="."]
+modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
+margin_left = 125.0
+margin_top = 370.631
+margin_right = 209.0
+margin_bottom = 447.631
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon3" type="TextureRect" parent="acc_slot3"]
+margin_left = 94.0
+margin_top = -93.0
+margin_right = 178.0
+margin_bottom = -16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="acc_slot4" type="Panel" parent="."]
+modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
+margin_left = 312.783
+margin_top = 278.0
+margin_right = 396.783
+margin_bottom = 355.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon4" type="TextureRect" parent="acc_slot4"]
+margin_right = 84.0
+margin_bottom = 77.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="acc_slot5" type="Panel" parent="."]
+modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
+margin_left = 218.783
+margin_top = 278.0
+margin_right = 302.783
+margin_bottom = 355.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon5" type="TextureRect" parent="acc_slot5"]
+margin_left = -188.0
+margin_top = 93.0
+margin_right = -104.0
+margin_bottom = 170.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="acc_slot6" type="Panel" parent="."]
+modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
+margin_left = 125.0
+margin_top = 278.0
+margin_right = 209.0
+margin_bottom = 355.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon6" type="TextureRect" parent="acc_slot6"]
+margin_top = 93.0
+margin_right = 84.0
+margin_bottom = 170.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="swap" type="Button" parent="."]
+margin_left = 75.0
+margin_top = 207.0
+margin_right = 179.0
+margin_bottom = 227.0
+custom_fonts/font = SubResource( 1 )
+text = "SWAP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="gui_input" from="wep_slot1/icon1" to="inventory" method="_on_icon1_gui_input"]
+[connection signal="gui_input" from="wep_slot2/icon2" to="inventory" method="_on_icon2_gui_input"]

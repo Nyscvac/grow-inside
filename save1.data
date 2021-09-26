@@ -1,0 +1,46 @@
+[Items]
+
+Items={
+"inventory": [  ],
+"vault": [ {
+"amount": 0,
+"id": 1,
+"id2": "heavy_pistol230924",
+"name": "heavy_pistol",
+"type": "weapons"
+}, {
+"amount": 0,
+"id": 2,
+"id2": "heavy_pistol924465",
+"name": "heavy_pistol",
+"type": "weapons"
+}, {
+"amount": 0,
+"id": 0,
+"id2": "Energy rifle540133",
+"name": "Energy rifle",
+"type": "weapons"
+}, {
+"amount": 0,
+"id": 2,
+"id2": "heavy_pistol666681",
+"name": "heavy_pistol",
+"type": "weapons"
+}, {
+"amount": 3,
+"id": 0,
+"id2": "common_seed23486",
+"name": "common_seed",
+"type": "resources"
+}, {
+"amount": 0,
+"id": 1,
+"id2": "heavy_pistol83181",
+"name": "heavy_pistol",
+"type": "weapons"
+} ],
+"weapons": {
+"slot1": 0,
+"slot2": -1
+}
+}

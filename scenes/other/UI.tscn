@@ -1,0 +1,99 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/control.gd" type="Script" id=1]
+[ext_resource path="res://kongtext.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/other/tab_menu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/other/black_intro.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "slots_light_up"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("tab_menu/wep_slot1:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.54902, 0.54902, 0.54902, 1 ), Color( 0.74902, 0.74902, 0.74902, 1 ), Color( 0.554665, 0.554665, 0.554665, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("tab_menu/wep_slot2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.54902, 0.54902, 0.54902, 1 ), Color( 0.74902, 0.74902, 0.74902, 1 ), Color( 0.54902, 0.54902, 0.54902, 1 ) ]
+}
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="control" type="Control" parent="."]
+margin_top = 1.0
+margin_right = 1026.0
+margin_bottom = 602.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="control"]
+margin_left = 843.0
+margin_top = 0.749
+margin_right = 1025.0
+margin_bottom = 33.749
+custom_fonts/font = SubResource( 1 )
+text = "60"
+align = 2
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="control"]
+margin_left = 108.443
+margin_top = 493.837
+margin_right = 318.443
+margin_bottom = 524.837
+custom_fonts/font = SubResource( 1 )
+text = "150/150"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="control"]
+margin_left = 37.091
+margin_top = 496.215
+margin_right = 247.091
+margin_bottom = 527.215
+custom_fonts/font = SubResource( 1 )
+text = "HP:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tab_menu" parent="control" instance=ExtResource( 3 )]
+
+[node name="wep_slot1" parent="control/tab_menu" index="1"]
+self_modulate = Color( 0.551843, 0.551843, 0.551843, 1 )
+
+[node name="anim" type="AnimationPlayer" parent="control"]
+anims/slots_light_up = SubResource( 2 )
+
+[node name="black_intro" parent="control" instance=ExtResource( 4 )]
+self_modulate = Color( 1, 1, 1, 1 )
+[connection signal="pressed" from="control/tab_menu/swap" to="control" method="_on_swap_pressed"]
+
+[editable path="control/tab_menu"]

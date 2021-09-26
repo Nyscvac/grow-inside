@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/456309__cynical2207__short-hits-with-metal-stick-on-a-steel-wheel.wav-d4c3772a65afca1259c5f230c6f570df.sample"
+
+[deps]
+
+source_file="res://audio/sfx/456309__cynical2207__short-hits-with-metal-stick-on-a-steel-wheel.wav"
+dest_files=[ "res://.import/456309__cynical2207__short-hits-with-metal-stick-on-a-steel-wheel.wav-d4c3772a65afca1259c5f230c6f570df.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

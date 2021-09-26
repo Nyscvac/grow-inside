@@ -1,0 +1,100 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://scripts/fly_bot.gd" type="Script" id=1]
+[ext_resource path="res://sprites/enemy_fly.png" type="Texture" id=2]
+[ext_resource path="res://sprites/shadow_fly.png" type="Texture" id=3]
+[ext_resource path="res://scenes/other/metal_death_particles.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/other/appear_par.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3.67841, 5.82449 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "fly",
+"speed": 12.0
+} ]
+
+[sub_resource type="Animation" id=9]
+resource_name = "get_hit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0481244, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 4.51077, 6.3023 )
+
+[node name="fly_bot" type="KinematicBody2D" groups=[
+"enemy",
+]]
+collision_layer = 2147483650
+collision_mask = 3
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.00949138, 1.83727 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0.5, 0 )
+frames = SubResource( 8 )
+animation = "fly"
+frame = 1
+playing = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="anim" type="AnimationPlayer" parent="."]
+anims/get_hit = SubResource( 9 )
+
+[node name="Particles2D" parent="." instance=ExtResource( 4 )]
+
+[node name="Sprite2" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.384314 )
+show_behind_parent = true
+position = Vector2( 0, 14.889 )
+texture = ExtResource( 3 )
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2( 0, 2.24492 )
+shape = SubResource( 10 )
+
+[node name="appear_par" parent="." instance=ExtResource( 5 )]

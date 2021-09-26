@@ -27,6 +27,7 @@ func end_mission(items):
 	get_node("UI/control/black_intro").play(1, "hided")
 	yield(get_node("UI/control/black_intro"), "hided")
 	var player = get_tree().get_nodes_in_group("player")[0]
+	items["inventory"] = player.inventory
 	items["weapons"]["slot1"] = player.weapon_slots["slot1"]
 	items["weapons"]["slot2"] = player.weapon_slots["slot2"]
 	g.Items = items
@@ -48,7 +49,7 @@ func skaner_done():
 		level_cleared = true
 
 func _physics_process(delta):
-	#print(Items.keys())
+	print(Items["inventory"])
 	if Input.is_action_just_pressed("ui_home"):
 		end_mission(Items)
 	if level_cleared:

@@ -15,6 +15,7 @@ var player_inventory = []
 
 func _ready():
 	if g.Items != null:
+		print("SEt")
 		items = g.Items
 		set_player_inventory(items["inventory"])
 		set_vault(items["vault"])

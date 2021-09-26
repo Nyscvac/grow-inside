@@ -238,6 +238,7 @@ func give_item(type, id, amount):
 	for i in inv:
 		if i.place == "player":
 			i.add_item2(type, id, amount)
+			inventory = i.Inventory
 			print("Inventory: ", i.Inventory)
 			return
 			

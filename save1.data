@@ -27,7 +27,7 @@ Items={
 "name": "heavy_pistol",
 "type": "weapons"
 }, {
-"amount": 3,
+"amount": 9,
 "id": 0,
 "id2": "common_seed23486",
 "name": "common_seed",
@@ -37,6 +37,12 @@ Items={
 "id": 1,
 "id2": "heavy_pistol83181",
 "name": "heavy_pistol",
+"type": "weapons"
+}, {
+"amount": 0,
+"id": 0,
+"id2": "Energy rifle58889",
+"name": "Energy rifle",
 "type": "weapons"
 } ],
 "weapons": {

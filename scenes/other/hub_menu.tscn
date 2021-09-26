@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://kongtext.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/other/inventory.tscn" type="PackedScene" id=2]
@@ -38,6 +38,9 @@ tracks/1/keys = {
 "values": [ Color( 0.54902, 0.54902, 0.54902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.54902, 0.54902, 0.54902, 1 ) ]
 }
 
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 1 )
 
@@ -67,9 +70,9 @@ __meta__ = {
 
 [node name="inventory" parent="tab_menu" instance=ExtResource( 2 )]
 margin_left = 420.0
-margin_top = 18.0
+margin_top = 32.0
 margin_right = 997.0
-margin_bottom = 274.0
+margin_bottom = 288.0
 max_columns = 10
 itself = "inventory"
 place = "hub"
@@ -253,6 +256,47 @@ __meta__ = {
 
 [node name="anim" type="AnimationPlayer" parent="tab_menu"]
 anims/slots_light_up = SubResource( 3 )
+
+[node name="vault2" type="Label" parent="tab_menu"]
+margin_left = 419.814
+margin_top = 293.321
+margin_right = 499.814
+margin_bottom = 309.321
+custom_fonts/font = SubResource( 6 )
+text = "Vault:"
+
+[node name="inv_l" type="Label" parent="tab_menu"]
+margin_left = 419.814
+margin_top = 16.0
+margin_right = 515.814
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 6 )
+text = "Inventory:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="inv_l2" type="Label" parent="tab_menu"]
+margin_left = 33.0182
+margin_top = 14.1101
+margin_right = 193.018
+margin_bottom = 30.1101
+custom_fonts/font = SubResource( 6 )
+text = "Weapons:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="inv_l3" type="Label" parent="tab_menu"]
+margin_left = 29.9729
+margin_top = 259.175
+margin_right = 221.973
+margin_bottom = 275.175
+custom_fonts/font = SubResource( 6 )
+text = "Accessories:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="background_loc" type="Panel" parent="."]
 visible = false

@@ -5,48 +5,60 @@ Items={
 "vault": [ {
 "amount": 0,
 "id": 1,
-"id2": "heavy_pistol230924",
+"id2": "heavy_pistol354332",
 "name": "heavy_pistol",
 "type": "weapons"
 }, {
 "amount": 0,
 "id": 2,
-"id2": "heavy_pistol924465",
+"id2": "heavy_pistol42174",
 "name": "heavy_pistol",
 "type": "weapons"
 }, {
 "amount": 0,
 "id": 0,
-"id2": "Energy rifle540133",
+"id2": "Energy rifle363860",
 "name": "Energy rifle",
 "type": "weapons"
 }, {
 "amount": 0,
 "id": 2,
-"id2": "heavy_pistol666681",
+"id2": "heavy_pistol1966",
 "name": "heavy_pistol",
 "type": "weapons"
 }, {
-"amount": 9,
+"amount": 12,
 "id": 0,
-"id2": "common_seed23486",
+"id2": "common_seed989559",
 "name": "common_seed",
 "type": "resources"
 }, {
 "amount": 0,
 "id": 1,
-"id2": "heavy_pistol83181",
+"id2": "heavy_pistol743415",
 "name": "heavy_pistol",
 "type": "weapons"
 }, {
 "amount": 0,
 "id": 0,
-"id2": "Energy rifle58889",
+"id2": "Energy rifle858667",
 "name": "Energy rifle",
+"type": "weapons"
+}, {
+"amount": 0,
+"id": 0,
+"id2": "Energy rifle587490",
+"name": "Energy rifle",
+"type": "weapons"
+}, {
+"amount": 0,
+"id": 2,
+"id2": "heavy_pistol632595",
+"name": "heavy_pistol",
 "type": "weapons"
 } ],
 "weapons": {
 "slot1": 0,
-"slot2": -1
+"slot2": 1
 }
 }

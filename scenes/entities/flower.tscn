@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://sprites/flower.png" type="Texture" id=1]
+[ext_resource path="res://scripts/flower.gd" type="Script" id=2]
+[ext_resource path="res://sprites/flower_outline.png" type="Texture" id=3]
+[ext_resource path="res://sprites/flower_ripped.png" type="Texture" id=4]
+[ext_resource path="res://sprites/leaf.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12.3626, 11.0573 )
+
+[sub_resource type="ParticlesMaterial" id=2]
+flag_disable_z = true
+direction = Vector3( 1, 1, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 80.46
+angular_velocity = -140.69
+angular_velocity_random = 0.6
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "get_hit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("normal:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.00364378, 0.0500032, 0.0939184 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="flower" type="Area2D"]
+show_behind_parent = true
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.187286, 0 )
+shape = SubResource( 1 )
+
+[node name="normal" type="Sprite" parent="."]
+self_modulate = Color( 1, 0.975006, 0.975006, 1 )
+position = Vector2( -0.768161, -2.04737 )
+texture = ExtResource( 1 )
+
+[node name="ripped" type="Sprite" parent="."]
+visible = false
+position = Vector2( -0.768161, -2.04737 )
+texture = ExtResource( 4 )
+
+[node name="outline" type="Sprite" parent="."]
+visible = false
+position = Vector2( -0.768161, 0.95263 )
+texture = ExtResource( 3 )
+
+[node name="leafs" type="Particles2D" parent="."]
+position = Vector2( 6.20161, -4.62493 )
+emitting = false
+amount = 3
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.9
+local_coords = false
+process_material = SubResource( 2 )
+texture = ExtResource( 5 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+anims/get_hit = SubResource( 3 )

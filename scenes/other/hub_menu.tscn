@@ -38,13 +38,13 @@ tracks/1/keys = {
 "values": [ Color( 0.54902, 0.54902, 0.54902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.54902, 0.54902, 0.54902, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=6]
-font_data = ExtResource( 1 )
-
 [sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
 size = 20
 font_data = ExtResource( 1 )
 
@@ -262,7 +262,7 @@ margin_left = 419.814
 margin_top = 293.321
 margin_right = 499.814
 margin_bottom = 309.321
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 4 )
 text = "Vault:"
 
 [node name="inv_l" type="Label" parent="tab_menu"]
@@ -270,7 +270,7 @@ margin_left = 419.814
 margin_top = 16.0
 margin_right = 515.814
 margin_bottom = 32.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 4 )
 text = "Inventory:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -281,7 +281,7 @@ margin_left = 33.0182
 margin_top = 14.1101
 margin_right = 193.018
 margin_bottom = 30.1101
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 4 )
 text = "Weapons:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -292,7 +292,7 @@ margin_left = 29.9729
 margin_top = 259.175
 margin_right = 221.973
 margin_bottom = 275.175
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 4 )
 text = "Accessories:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -312,7 +312,7 @@ margin_left = 126.321
 margin_top = 89.5556
 margin_right = 292.321
 margin_bottom = 139.556
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "JUNGLE"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -323,7 +323,7 @@ margin_left = 408.215
 margin_top = 21.4187
 margin_right = 858.214
 margin_bottom = 72.4187
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "LOCATIONS"
 __meta__ = {
 "_edit_use_anchors_": false

@@ -77,8 +77,8 @@ var resources = {
 var accessories = {
 	0 : {
 		"id" : 0,
-		"icon" : "res://sprites/bullet2.png",
-		"name" : "bullet",
+		"icon" : "res://sprites/rebar_boots.png",
+		"name" : "rebar_boots",
 		"scene" : "res://scenes/entities/bullet2.tscn",
 		}
 }
@@ -116,13 +116,15 @@ var enemies = {
 }
 
 var item_actions = {
-	"resources" : ["info", "delete"],
+	"accessories" : ["equip", "delete", "info"],
+	"resources" : ["delete", "info"],
 	"weapons" : ["equip", "delete"]  
 	
 }
 var item_actions_hub = {
-	"resources" : ["info", "delete", "put"],
-	"weapons" : ["equip", "delete", "put"]  
+	"accessories" : ["equip", "delete", "put", "info"], 
+	"resources" : ["delete", "put", "info"],
+	"weapons" : ["equip", "delete", "put", "info"]  
 	
 }
 

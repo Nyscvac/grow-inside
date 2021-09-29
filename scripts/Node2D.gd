@@ -49,7 +49,7 @@ func skaner_done():
 		level_cleared = true
 
 func _physics_process(delta):
-	print(Items["inventory"])
+	#print(Items["inventory"])
 	if Input.is_action_just_pressed("ui_home"):
 		end_mission(Items)
 	if level_cleared:

@@ -50,54 +50,54 @@ func apply_friction(amount):
 	else:
 		motion = Vector2.ZERO
 
-func add_item(type, id, amount):
-	if type == "resources":
-		if inventory.size() > 0:
-			var has = false
-			for i in inventory.size():
-				if inventory[i]["id"] == id:
-					if inventory[i]["type"] == type:
-						if inventory[i]["amount"] < DB.resources[id]["stack_size"]:
-							if inventory[i]["amount"] + amount <= DB.resources[id]["stack_size"]:
-								inventory[i]["amount"] += amount
-							else:
-								var was = inventory[i]["amount"]
-								inventory[i]["amount"] += DB.resources[id]["stack_size"] - inventory[i]["amount"]
-								inventory.append({
-									"id" : id,
-									"amount" : was + amount - DB.resources[id]["stack_size"],
-									"name" : DB.get(type)[id]["name"],
-									"type" : type,
-									"id2" : DB.get(type)[id]["name"] + str(randi() % 999999)
-									})
-							return
-						else:
-							if i < inventory.size() - 1:
-								continue
-							inventory.append({
-								"id" : id,
-								"amount" : amount, 
-								"name" : DB.get(type)[id]["name"],
-								"type" : type,
-								"id2" : DB.get(type)[id]["name"] + str(randi() % 999999)
-							})
-							return
-		else:
-			inventory.append({
-				"id" : id,
-				"amount" : amount, 
-				"name" : DB.get(type)[id]["name"],
-				"type" : type,
-				"id2" : DB.get(type)[id]["name"] + str(randi() % 999999)
-						})
-			return
-	else:
-		inventory.append({
-			"id" : id,
-			"name" : DB.get(type)[id]["name"],
-			"type" : type,
-			"id2" : DB.get(type)[id]["name"] + str(randi() % 999999)
-		})
+#func add_item(type, id, amount):
+#	if type == "resources":
+#		if inventory.size() > 0:
+#			var has = false
+#			for i in inventory.size():
+#				if inventory[i]["id"] == id:
+#					if inventory[i]["type"] == type:
+#						if inventory[i]["amount"] < DB.resources[id]["stack_size"]:
+#							if inventory[i]["amount"] + amount <= DB.resources[id]["stack_size"]:
+#								inventory[i]["amount"] += amount
+#							else:
+#								var was = inventory[i]["amount"]
+#								inventory[i]["amount"] += DB.resources[id]["stack_size"] - inventory[i]["amount"]
+#								inventory.append({
+#									"id" : id,
+#									"amount" : was + amount - DB.resources[id]["stack_size"],
+#									"name" : DB.get(type)[id]["name"],
+#									"type" : type,
+#									"id2" : DB.get(type)[id]["name"] + str(randi() % 999999)
+#									})
+#							return
+#						else:
+#							if i < inventory.size() - 1:
+#								continue
+#							inventory.append({
+#								"id" : id,
+#								"amount" : amount, 
+#								"name" : DB.get(type)[id]["name"],
+#								"type" : type,
+#								"id2" : DB.get(type)[id]["name"] + str(randi() % 999999)
+#							})
+#							return
+#		else:
+#			inventory.append({
+#				"id" : id,
+#				"amount" : amount, 
+#				"name" : DB.get(type)[id]["name"],
+#				"type" : type,
+#				"id2" : DB.get(type)[id]["name"] + str(randi() % 999999)
+#						})
+#			return
+#	else:
+#		inventory.append({
+#			"id" : id,
+#			"name" : DB.get(type)[id]["name"],
+#			"type" : type,
+#			"id2" : DB.get(type)[id]["name"] + str(randi() % 999999)
+#		})
 
 func remove_item(id2):
 	for i in inventory:
@@ -227,7 +227,12 @@ func equip(type, id, slot):
 			selected_slot = weapon_slots[slot]
 			update_sel_slot()
 		else:
-			add_item("weapons", weapon_slots[slot], 1)
+			var inv = get_tree().get_nodes_in_group("inv")
+			for i in inv:
+				if i.place == "player":
+					i.add_item2("weapons", weapon_slots[slot], 1)
+					inventory = i.Inventory
+			#get_add_item("weapons", weapon_slots[slot], 1)
 			weapon_slots[slot] = id
 			selected_slot = weapon_slots[slot]
 			update_sel_slot()

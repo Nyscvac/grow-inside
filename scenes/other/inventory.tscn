@@ -9,6 +9,7 @@ margin_right = 479.0
 margin_bottom = 354.0
 rect_pivot_offset = Vector2( 170, -138 )
 allow_rmb_select = true
+icon_mode = 0
 icon_scale = 3.0
 script = ExtResource( 1 )
 __meta__ = {

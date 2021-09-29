@@ -88,7 +88,7 @@ func add_item2(type, id, amount):
 			"id2" : DB.get(type)[id]["name"] + str(randi() % 999999)
 		})
 		update_inventory(Inventory)
-		print("ItemList: ", items)
+		#print("ItemList: ", items)
 
 func update_inventory(inventory):
 	Inventory = inventory

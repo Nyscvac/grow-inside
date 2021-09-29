@@ -3,6 +3,7 @@ extends Control
 func _ready():
 	#$tab_menu.show()
 	$tab_menu.hide()
+	$black_intro.show()
 	$black_intro.play(1, "showed")
 	$tab_menu.hide()
 

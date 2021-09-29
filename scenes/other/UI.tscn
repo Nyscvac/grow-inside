@@ -93,6 +93,7 @@ self_modulate = Color( 0.551843, 0.551843, 0.551843, 1 )
 anims/slots_light_up = SubResource( 2 )
 
 [node name="black_intro" parent="control" instance=ExtResource( 4 )]
+visible = false
 self_modulate = Color( 1, 1, 1, 1 )
 [connection signal="pressed" from="control/tab_menu/swap" to="control" method="_on_swap_pressed"]
 

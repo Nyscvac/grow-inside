@@ -5,15 +5,7 @@ var skaners_done = 0
 onready var max_skaners = get_tree().get_nodes_in_group("scaner").size()
 var enemy_pool = 0
 var level_cleared = false
-var Items = {
-	"weapons" : {
-		"slot1" : -1,
-		"slot2" : -1
-				},
-	"inventory" : [],
-	"vault" : []
-}
-
+var Items = g.Items_empty_ex
 
 
 
@@ -31,15 +23,19 @@ func end_mission(items):
 	items["weapons"]["slot1"] = player.weapon_slots["slot1"]
 	items["weapons"]["slot2"] = player.weapon_slots["slot2"]
 	g.Items = items
-	print(items)
+	#print("ITEMS: ", items)
 	get_tree().change_scene("res://scenes/other/hub_menu.tscn")
 
 func spawn_player(items):
 	var player = load(DB.entities[4]["scene"]).instance()
-	if items != {}:
+	if items != g.Items_empty_ex:
+		print("ITEMS: ", items)
 		player.weapon_slots["slot1"] = items["weapons"]["slot1"]
 		player.weapon_slots["slot2"] = items["weapons"]["slot2"]
 		player.inventory = items["inventory"]
+		player.accessories = items["accessories"]
+		player.apply_accessories(true)
+		print(items["inventory"],"GGG")
 	player.global_position = $player_spawn_pos.global_position
 	add_child(player)
 

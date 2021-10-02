@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/medkit.png-d30e7ead3c3466b51fd538e6692ed75a.stex"
+path="res://.import/bio_energy_core.png-e303de637c3d28391a43cced63d65414.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/medkit.png"
-dest_files=[ "res://.import/medkit.png-d30e7ead3c3466b51fd538e6692ed75a.stex" ]
+source_file="res://sprites/bio_energy_core.png"
+dest_files=[ "res://.import/bio_energy_core.png-e303de637c3d28391a43cced63d65414.stex" ]
 
 [params]
 

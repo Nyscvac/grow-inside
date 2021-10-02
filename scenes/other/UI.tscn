@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/control.gd" type="Script" id=1]
 [ext_resource path="res://kongtext.ttf" type="DynamicFontData" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://scenes/other/black_intro.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 25
+size = 10
 font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=2]
@@ -35,6 +35,81 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 0.54902, 0.54902, 0.54902, 1 ), Color( 0.74902, 0.74902, 0.74902, 1 ), Color( 0.54902, 0.54902, 0.54902, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "slots_light_up_acc"
+tracks/0/type = "value"
+tracks/0/path = NodePath("tab_menu/acc_slot1:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.54902, 0.54902, 0.54902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.54902, 0.54902, 0.54902, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("tab_menu/acc_slot2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.54902, 0.54902, 0.54902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.54902, 0.54902, 0.54902, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("tab_menu/acc_slot4:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.54902, 0.54902, 0.54902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.54902, 0.54902, 0.54902, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("tab_menu/acc_slot3:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.54902, 0.54902, 0.54902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.54902, 0.54902, 0.54902, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("tab_menu/acc_slot5:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.54902, 0.54902, 0.54902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.54902, 0.54902, 0.54902, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("tab_menu/acc_slot6:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.1, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.54902, 0.54902, 0.54902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.54902, 0.54902, 0.54902, 1 ) ]
 }
 
 [node name="UI" type="CanvasLayer"]
@@ -89,12 +164,82 @@ __meta__ = {
 [node name="wep_slot1" parent="control/tab_menu" index="1"]
 self_modulate = Color( 0.551843, 0.551843, 0.551843, 1 )
 
+[node name="icon1c" parent="control/tab_menu/acc_slot1" index="0"]
+margin_right = 28.0
+margin_bottom = 26.0
+
+[node name="acc_slot2" parent="control/tab_menu" index="4"]
+margin_left = 127.279
+margin_top = 278.0
+margin_right = 211.279
+margin_bottom = 355.0
+
+[node name="icon2c" parent="control/tab_menu/acc_slot2" index="0"]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 28.0
+margin_bottom = 26.0
+
+[node name="acc_slot3" parent="control/tab_menu" index="5"]
+margin_left = 219.0
+margin_top = 278.0
+margin_right = 303.0
+margin_bottom = 355.0
+
+[node name="icon3c" parent="control/tab_menu/acc_slot3" index="0"]
+margin_left = 0.0
+margin_top = 0.368988
+margin_right = 28.0
+margin_bottom = 26.369
+
+[node name="icon4c" parent="control/tab_menu/acc_slot4" index="0"]
+margin_left = -3.05176e-05
+margin_top = 0.369019
+margin_right = 28.0
+margin_bottom = 26.369
+
+[node name="acc_slot5" parent="control/tab_menu" index="7"]
+margin_left = 31.0
+margin_top = 372.45
+margin_right = 115.0
+margin_bottom = 449.45
+
+[node name="icon5c" parent="control/tab_menu/acc_slot5" index="0"]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 28.0
+margin_bottom = 26.0
+
+[node name="acc_slot6" parent="control/tab_menu" index="8"]
+margin_left = 127.279
+margin_top = 372.45
+margin_right = 211.279
+margin_bottom = 449.45
+
+[node name="icon6c" parent="control/tab_menu/acc_slot6" index="0"]
+margin_top = 0.0
+margin_right = 28.0
+margin_bottom = 26.0
+
 [node name="anim" type="AnimationPlayer" parent="control"]
 anims/slots_light_up = SubResource( 2 )
+anims/slots_light_up_acc = SubResource( 3 )
 
 [node name="black_intro" parent="control" instance=ExtResource( 4 )]
 visible = false
 self_modulate = Color( 1, 1, 1, 1 )
+
+[node name="debug" type="Label" parent="control"]
+margin_top = 143.0
+margin_right = 247.0
+margin_bottom = 196.0
+rect_clip_content = true
+custom_fonts/font = SubResource( 1 )
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="control/tab_menu/swap" to="control" method="_on_swap_pressed"]
 
 [editable path="control/tab_menu"]

@@ -1,14 +1,7 @@
 extends Control
 
 
-var items = {
-	"weapons" : {
-		"slot1" : -1,
-		"slot2" : -1
-				},
-	"inventory" : [],
-	"vault" : []
-}
+var items = g.Items_empty_ex
 
 var vault_inventory = []
 var player_inventory = []
@@ -32,11 +25,7 @@ func set_player_inventory(inventory):
 	player_inventory = inventory
 	update_inventories()
 
-func update_inventories():
-	$tab_menu/inventory.clear()
-	$tab_menu/vault.clear()
-	$tab_menu/inventory.update_inventory(player_inventory)
-	$tab_menu/vault.update_inventory(vault_inventory)
+func update_weapons():
 	if items["weapons"]["slot1"] != -1:
 		$tab_menu/wep_slot1/icon1.texture = load(DB.weapons[items["weapons"]["slot1"]]["icon"])
 	else:
@@ -45,12 +34,32 @@ func update_inventories():
 		$tab_menu/wep_slot2/icon2.texture = load(DB.weapons[items["weapons"]["slot2"]]["icon"])
 	else:
 		$tab_menu/wep_slot2/icon2.texture = null
+
+func update_accessories():
+	var c = 1
+	for i in items["accessories"].keys():
+		if items["accessories"][i]["id"] != -1:
+			get_node("tab_menu/acc_" + i + "/icon"+ str(c)+"c").texture = load(DB.accessories[items["accessories"][i]["id"]]["icon"])
+		c += 1
+	#print("F")
+func update_inventories():
+	#print("FF")
+	$tab_menu/inventory.clear()
+	$tab_menu/vault.clear()
+	$tab_menu/inventory.update_inventory(player_inventory)
+	$tab_menu/vault.update_inventory(vault_inventory)
+	update_weapons()
+	update_accessories()
+	g.save_items()
 func set_vault(inventory):
 	vault_inventory = inventory
 	update_inventories()
 
 func set_weapon(slot, weapon):
 	items["weapons"][slot] = weapon
+
+func set_accessory(slot, acc):
+	items["accessories"][slot]["id"] = acc
 
 func start_mission(location_id):
 	var level = load(DB.locations[location_id]["scene"])
@@ -91,3 +100,6 @@ func _on_swap_pressed():
 	items["weapons"]["slot1"] = slot2
 	items["weapons"]["slot2"] = slot1
 	update_inventories()
+
+
+

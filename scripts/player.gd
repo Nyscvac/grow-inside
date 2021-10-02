@@ -12,13 +12,21 @@ var hp = 150
 var can_dash = true
 var can_get_hit = true
 var selected_slot = -1
+var accessories = {
+	"slot1" : {"id" : -1, "working" : false},
+	"slot2" : {"id" : -1, "working" : false}, 
+	"slot3" : {"id" : -1, "working" : false}, 
+	"slot4" : {"id" : -1, "working" : false}, 
+	"slot5" : {"id" : -1, "working" : false},
+	"slot6" : {"id" : -1, "working" : false},
+}
 var weapon_slots = {
 	"slot1" : -1,
 	"slot2" : -1
 }
 var inventory = []
 onready var tree = get_tree()
-var acc_slots = []
+
 
 func dead():
 	queue_free()
@@ -38,7 +46,6 @@ func get_hit(damage:int):
 		$anim.play("imframes")
 		$imframes.start()
 
-
 func get_input_axis():
 	var axis = Vector2.ZERO
 	axis.x = int(Input.is_action_pressed('d')) - int(Input.is_action_pressed('a'))
@@ -49,55 +56,6 @@ func apply_friction(amount):
 		motion -= motion.normalized() * amount
 	else:
 		motion = Vector2.ZERO
-
-#func add_item(type, id, amount):
-#	if type == "resources":
-#		if inventory.size() > 0:
-#			var has = false
-#			for i in inventory.size():
-#				if inventory[i]["id"] == id:
-#					if inventory[i]["type"] == type:
-#						if inventory[i]["amount"] < DB.resources[id]["stack_size"]:
-#							if inventory[i]["amount"] + amount <= DB.resources[id]["stack_size"]:
-#								inventory[i]["amount"] += amount
-#							else:
-#								var was = inventory[i]["amount"]
-#								inventory[i]["amount"] += DB.resources[id]["stack_size"] - inventory[i]["amount"]
-#								inventory.append({
-#									"id" : id,
-#									"amount" : was + amount - DB.resources[id]["stack_size"],
-#									"name" : DB.get(type)[id]["name"],
-#									"type" : type,
-#									"id2" : DB.get(type)[id]["name"] + str(randi() % 999999)
-#									})
-#							return
-#						else:
-#							if i < inventory.size() - 1:
-#								continue
-#							inventory.append({
-#								"id" : id,
-#								"amount" : amount, 
-#								"name" : DB.get(type)[id]["name"],
-#								"type" : type,
-#								"id2" : DB.get(type)[id]["name"] + str(randi() % 999999)
-#							})
-#							return
-#		else:
-#			inventory.append({
-#				"id" : id,
-#				"amount" : amount, 
-#				"name" : DB.get(type)[id]["name"],
-#				"type" : type,
-#				"id2" : DB.get(type)[id]["name"] + str(randi() % 999999)
-#						})
-#			return
-#	else:
-#		inventory.append({
-#			"id" : id,
-#			"name" : DB.get(type)[id]["name"],
-#			"type" : type,
-#			"id2" : DB.get(type)[id]["name"] + str(randi() % 999999)
-#		})
 
 func remove_item(id2):
 	for i in inventory:
@@ -111,7 +69,6 @@ func apply_movement(aceleration):
 	motion += aceleration
 	motion = motion.clamped(speed)
 
-
 func get_nearest_enemy():
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	if enemies.empty():
@@ -123,19 +80,9 @@ func get_nearest_enemy():
 	var closest_enemy = distances.min()
 	var enemy_idx = distances.find(closest_enemy)
 	return enemies[enemy_idx]
+
 func get_position():
 	return position
-
-#func _input(event):
-#	if event is InputEventMouseButton:
-#		if event.button_index == 2:
-#			if selected_slot == slot1:
-#				selected_slot = slot2
-#				#print("G")
-#				update_sel_slot()
-#			else: 
-#				selected_slot = slot1
-#				update_sel_slot()
 
 func _physics_process(delta):
 	#print(slot1, slot2, selected_slot)
@@ -153,8 +100,8 @@ func _physics_process(delta):
 		if $Camera2D.zoom != Vector2(1.5, 1.5):
 			$Camera2D.zoom = Vector2(1.5, 1.5)
 	else:
-		if $Camera2D.zoom != Vector2(0.3, 0.3):
-			$Camera2D.zoom = Vector2(0.3, 0.3)
+		if $Camera2D.zoom != Vector2(0.4, 0.4):
+			$Camera2D.zoom = Vector2(0.4, 0.4)
 	if Input.is_action_pressed("d"):
 	
 			$Sprite.flip_h = false
@@ -194,11 +141,14 @@ func update_sel_slot():
 		wep.position = $wep_pos.position
 		add_child(wep)
 
+func get_heal(value):
+	hp += value
+	hp = clamp(hp, 0, max_hp)
+
 func clear_weapon():
 	for i in get_children():
 		if i.is_in_group("weapon"):
 			i.queue_free()
-
 
 func drop_selected_weapon():
 	var drop = load(DB.entities[3]["scene"]).instance()
@@ -213,12 +163,29 @@ func drop_selected_weapon():
 		weapon_slots["slot2"] = -1
 		selected_slot = -1
 		update_sel_slot()
+
 func take_weapon(slot):
 	clear_weapon()
 	var wep = load(DB.get("weapons")[slot]["scene"]).instance()
 	wep.position = $wep_pos.position
 	add_child(wep)
 	selected_slot = slot
+
+func apply_accessory(slot, mode:bool):
+	call(DB.accessories[accessories[slot]["id"]]["effect"], mode)
+	
+func apply_accessories(mode:bool):
+	for i in accessories:
+		if accessories[i]["id"] != -1:
+			if accessories[i]["working"] == false:
+				call(DB.accessories[accessories[i]["id"]]["effect"], mode)
+				accessories[i]["working"] = true
+
+func clear_accessory(slot):
+	call(DB.accessories[accessories[slot]["id"]]["effect"], false)
+
+func use_consumable(id):
+	call(DB.consumable[id]["effect"])
 
 func equip(type, id, slot):
 	if type == "weapons":
@@ -236,8 +203,25 @@ func equip(type, id, slot):
 			weapon_slots[slot] = id
 			selected_slot = weapon_slots[slot]
 			update_sel_slot()
-
-
+	elif type == "accessories":
+		#if accessories[slot]["id"] != id:
+		if accessories[slot]["id"] == -1:
+			accessories[slot]["id"] = id
+			apply_accessory(slot, true)
+		else:
+			var inv = get_tree().get_nodes_in_group("inv")
+			for i in inv:
+				if i.place == "player":
+					apply_accessory(slot, false)
+					print("CHANGED")
+					i.add_item2("accessories", accessories[slot]["id"], 1)
+					print(i.Inventory)
+					#inventory = i.Inventory
+				#break
+			
+			#inventory = get_tree().get_nodes_in_group("inv")[0].Inventory
+			accessories[slot]["id"] = id
+			apply_accessory(slot, true)
 func give_item(type, id, amount):
 	var inv = get_tree().get_nodes_in_group("inv")
 	for i in inv:
@@ -246,7 +230,7 @@ func give_item(type, id, amount):
 			inventory = i.Inventory
 			print("Inventory: ", i.Inventory)
 			return
-			
+
 func dash():
 	if can_dash:
 		$Particles2D.emitting = true
@@ -258,6 +242,26 @@ func dash():
 		$dash.start()
 		can_dash = false
 
+#Accessories effects
+
+func medkit_use():
+	get_heal(50)
+
+func bio_energy_core_eff(mode:bool):
+	if mode:
+		max_hp += 50
+		hp += 50
+	else:
+		max_hp -= 50
+		hp -= 50
+
+func rebar_boots_eff(mode:bool):
+	if mode:
+		speed += 50
+		acceleration += 50
+	else:
+		speed -= 50
+		acceleration -= 50
 
 func _on_Timer_timeout():
 	$Sprite.modulate = Color(1, 1, 1, 1)
@@ -266,11 +270,9 @@ func _on_Timer_timeout():
 	acceleration = 1000
 	$Particles2D.emitting = false
 
-
 func _on_dash_timeout():
 	can_dash = true
 	$anim.play("dash_ready")
-
 
 func _on_imframes_timeout():
 	can_get_hit = true

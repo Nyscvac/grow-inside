@@ -18,11 +18,17 @@ func update_slots():
 		$tab_menu/wep_slot2/icon2.texture = load(DB.weapons[player.weapon_slots["slot2"]]["icon"])
 	else:
 		$tab_menu/wep_slot2/icon2.texture = null
-
+	var c = 1
+	for i in player.accessories.keys():
+		if player.accessories[i]["id"] != -1:
+			get_node("tab_menu/acc_" + i + "/icon"+ str(c)+"c").texture = load(DB.accessories[player.accessories[i]["id"]]["icon"])
+		c += 1
 func _process(delta):
+	#$tab_menu/inventory.update_inventory($tab_menu/inventory.Inventory)
 	if get_tree().get_nodes_in_group("player").size() != 0:
 		var p_hp = get_tree().get_nodes_in_group("player")[0].hp
 		var p_mx_hp = get_tree().get_nodes_in_group("player")[0].max_hp
+		$debug.text = str($tab_menu/inventory.Inventory)
 #		$ProgressBar.value = p_hp
 #		$ProgressBar.max_value = p_mx_hp
 #		$ProgressBar
@@ -32,7 +38,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("tab"):
 		if !$tab_menu.visible:
 			$tab_menu.visible = true
-			#$tab_menu/inventory.update_inventory(get_tree().get_nodes_in_group("player")[0].inventory)
+			$tab_menu/inventory.update_inventory(get_tree().get_nodes_in_group("player")[0].inventory)
 			update_slots()
 		else:
 			$tab_menu.visible = false

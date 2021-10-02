@@ -7,9 +7,17 @@ const Items_empty_ex = {
 		"slot2" : -1
 				},
 	"inventory" : [],
-	"vault" : []
+	"vault" : [],
+	"accessories" : {
+	"slot1" : {"id" : -1, "working" : false},
+	"slot2" : {"id" : -1, "working" : false}, 
+	"slot3" : {"id" : -1, "working" : false}, 
+	"slot4" : {"id" : -1, "working" : false}, 
+	"slot5" : {"id" : -1, "working" : false},
+	"slot6" : {"id" : -1, "working" : false},
 }
-
+}
+const max_accessories = 6
 func _ready():
 	randomize()
 

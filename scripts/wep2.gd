@@ -3,7 +3,7 @@ extends Node2D
 
 
 var can_shoot = false
-var damage = 10
+var damage = 15
 var id = 2
 
 func _ready():

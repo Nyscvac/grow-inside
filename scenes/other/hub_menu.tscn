@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://kongtext.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/other/inventory.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "slots_light_up"
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("wep_slot1:self_modulate")
 tracks/0/interp = 1
@@ -23,7 +24,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0.1, 0.5, 0.9 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0.54902, 0.54902, 0.54902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.549664, 0.549664, 0.549664, 1 ) ]
+"values": [ Color( 0.54902, 0.54902, 0.54902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.54902, 0.54902, 0.54902, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("wep_slot2:self_modulate")
@@ -38,13 +39,89 @@ tracks/1/keys = {
 "values": [ Color( 0.54902, 0.54902, 0.54902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.54902, 0.54902, 0.54902, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=4]
-font_data = ExtResource( 1 )
+[sub_resource type="Animation" id=4]
+resource_name = "slots_light_up_acc"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("acc_slot1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.54902, 0.54902, 0.54902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.54902, 0.54902, 0.54902, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("acc_slot2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.54902, 0.54902, 0.54902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.54902, 0.54902, 0.54902, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("acc_slot3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.54902, 0.54902, 0.54902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.54902, 0.54902, 0.54902, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("acc_slot4:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.54902, 0.54902, 0.54902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.54902, 0.54902, 0.54902, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("acc_slot5:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.54902, 0.54902, 0.54902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.54902, 0.54902, 0.54902, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("acc_slot6:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.1, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.54902, 0.54902, 0.54902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.54902, 0.54902, 0.54902, 1 ) ]
+}
 
 [sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
 size = 20
 font_data = ExtResource( 1 )
 
@@ -87,7 +164,7 @@ itself = "vault"
 place = "hub"
 
 [node name="wep_slot1" type="Panel" parent="tab_menu"]
-self_modulate = Color( 0.549664, 0.549664, 0.549664, 1 )
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 margin_left = 31.0
 margin_top = 33.0
 margin_right = 219.0
@@ -136,44 +213,49 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon1" type="TextureRect" parent="tab_menu/acc_slot1"]
-margin_right = 84.0
-margin_bottom = 77.0
-
-[node name="acc_slot2" type="Panel" parent="tab_menu"]
-modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
-margin_left = 31.0
-margin_top = 370.631
-margin_right = 115.0
-margin_bottom = 447.631
+[node name="icon1c" type="TextureRect" parent="tab_menu/acc_slot1"]
+margin_right = 28.0
+margin_bottom = 27.0
+rect_scale = Vector2( 3, 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon2" type="TextureRect" parent="tab_menu/acc_slot2"]
-margin_left = 94.0
-margin_top = -93.0
-margin_right = 178.0
-margin_bottom = -16.0
+[node name="acc_slot2" type="Panel" parent="tab_menu"]
+modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
+margin_left = 125.0
+margin_top = 275.175
+margin_right = 209.0
+margin_bottom = 352.175
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon2c" type="TextureRect" parent="tab_menu/acc_slot2"]
+margin_top = 1.52588e-05
+margin_right = 28.0
+margin_bottom = 27.0
+rect_scale = Vector2( 3, 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="acc_slot3" type="Panel" parent="tab_menu"]
 modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
-margin_left = 125.0
-margin_top = 370.631
-margin_right = 209.0
-margin_bottom = 447.631
+margin_left = 218.783
+margin_top = 278.0
+margin_right = 302.783
+margin_bottom = 355.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon3" type="TextureRect" parent="tab_menu/acc_slot3"]
-margin_left = 94.0
-margin_top = -93.0
-margin_right = 178.0
-margin_bottom = -16.0
+[node name="icon3c" type="TextureRect" parent="tab_menu/acc_slot3"]
+margin_left = 0.217026
+margin_top = -1.52588e-05
+margin_right = 29.217
+margin_bottom = 25.0
+rect_scale = Vector2( 3, 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -188,28 +270,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon4" type="TextureRect" parent="tab_menu/acc_slot4"]
-margin_right = 84.0
-margin_bottom = 77.0
+[node name="icon4c" type="TextureRect" parent="tab_menu/acc_slot4"]
+margin_right = 29.0
+margin_bottom = 26.0
+rect_scale = Vector2( 3, 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="acc_slot5" type="Panel" parent="tab_menu"]
 modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
-margin_left = 218.783
-margin_top = 278.0
-margin_right = 302.783
-margin_bottom = 355.0
+margin_left = 29.9729
+margin_top = 369.974
+margin_right = 113.973
+margin_bottom = 446.974
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon5" type="TextureRect" parent="tab_menu/acc_slot5"]
-margin_left = -188.0
-margin_top = 93.0
-margin_right = -104.0
-margin_bottom = 170.0
+[node name="icon5c" type="TextureRect" parent="tab_menu/acc_slot5"]
+margin_left = -2.92593
+margin_right = 26.0741
+margin_bottom = 26.0
+rect_scale = Vector2( 3, 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -217,17 +300,17 @@ __meta__ = {
 [node name="acc_slot6" type="Panel" parent="tab_menu"]
 modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
 margin_left = 125.0
-margin_top = 278.0
+margin_top = 369.974
 margin_right = 209.0
-margin_bottom = 355.0
+margin_bottom = 446.974
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon6" type="TextureRect" parent="tab_menu/acc_slot6"]
-margin_top = 93.0
-margin_right = 84.0
-margin_bottom = 170.0
+[node name="icon6c" type="TextureRect" parent="tab_menu/acc_slot6"]
+margin_right = 28.0
+margin_bottom = 27.0
+rect_scale = Vector2( 3, 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -256,13 +339,14 @@ __meta__ = {
 
 [node name="anim" type="AnimationPlayer" parent="tab_menu"]
 anims/slots_light_up = SubResource( 3 )
+anims/slots_light_up_acc = SubResource( 4 )
 
 [node name="vault2" type="Label" parent="tab_menu"]
 margin_left = 419.814
 margin_top = 293.321
 margin_right = 499.814
 margin_bottom = 309.321
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Vault:"
 
 [node name="inv_l" type="Label" parent="tab_menu"]
@@ -270,7 +354,7 @@ margin_left = 419.814
 margin_top = 16.0
 margin_right = 515.814
 margin_bottom = 32.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Inventory:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -281,7 +365,7 @@ margin_left = 33.0182
 margin_top = 14.1101
 margin_right = 193.018
 margin_bottom = 30.1101
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Weapons:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -292,7 +376,7 @@ margin_left = 29.9729
 margin_top = 259.175
 margin_right = 221.973
 margin_bottom = 275.175
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Accessories:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -312,7 +396,7 @@ margin_left = 126.321
 margin_top = 89.5556
 margin_right = 292.321
 margin_bottom = 139.556
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "JUNGLE"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -323,7 +407,7 @@ margin_left = 408.215
 margin_top = 21.4187
 margin_right = 858.214
 margin_bottom = 72.4187
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = "LOCATIONS"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -352,9 +436,16 @@ __meta__ = {
 }
 
 [node name="black_intro" parent="." instance=ExtResource( 4 )]
+visible = false
 self_modulate = Color( 1, 1, 1, 1 )
 [connection signal="gui_input" from="tab_menu/wep_slot1/icon1" to="tab_menu/inventory" method="_on_icon1_gui_input"]
 [connection signal="gui_input" from="tab_menu/wep_slot2/icon2" to="tab_menu/inventory" method="_on_icon2_gui_input"]
+[connection signal="gui_input" from="tab_menu/acc_slot1/icon1c" to="tab_menu/inventory" method="_on_icon1c_gui_input"]
+[connection signal="gui_input" from="tab_menu/acc_slot2/icon2c" to="tab_menu/inventory" method="_on_icon2c_gui_input"]
+[connection signal="gui_input" from="tab_menu/acc_slot3/icon3c" to="tab_menu/inventory" method="_on_icon3c_gui_input"]
+[connection signal="gui_input" from="tab_menu/acc_slot4/icon4c" to="tab_menu/inventory" method="_on_icon4c_gui_input"]
+[connection signal="gui_input" from="tab_menu/acc_slot5/icon5c" to="tab_menu/inventory" method="_on_icon5c_gui_input"]
+[connection signal="gui_input" from="tab_menu/acc_slot6/icon6c" to="tab_menu/inventory" method="_on_icon6c_gui_input"]
 [connection signal="pressed" from="tab_menu/swap" to="." method="_on_swap_pressed"]
 [connection signal="pressed" from="tab_menu/back_b" to="." method="_on_back_b_pressed"]
 [connection signal="pressed" from="background_loc/loc_jun_b" to="." method="_on_loc_jun_b_pressed"]

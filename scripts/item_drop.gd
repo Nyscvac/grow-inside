@@ -3,7 +3,7 @@ extends Area2D
 
 
 export var Id = -1
-export var Type = ""
+export(String, "consumable", "resources", "accessories", "weapons", "none") var Type:String
 export var Amount = 0
 
 func _ready():
@@ -17,6 +17,9 @@ func set_item(type, id, amount):
 	Amount = amount
 func _physics_process(delta):
 	if get_tree().get_nodes_in_group("player")[0] in get_overlapping_bodies():
+		$Sprite2.show()
 		if Input.is_action_just_pressed("E"):
 			get_tree().get_nodes_in_group("player")[0].give_item(Type, Id, Amount)
 			queue_free()
+	else:
+		$Sprite2.hide()

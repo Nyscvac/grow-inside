@@ -26,8 +26,9 @@ func rip_it_off():
 		leaf_release(0)
 		if hp <= 0:
 			var type
-			var type_rand = randi() % 2
-			var items = ["weapons", "accessories"]
+			var items = ["weapons"]
+			#var items = ["weapons", "accessories", "consumables"]
+			var type_rand = randi() % items.size()
 			type = items[type_rand]
 			var id = DB.get(type)[randi() % DB.get(type).size()]["id"]
 			var item_drop = load(DB.entities[3]["scene"]).instance()

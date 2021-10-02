@@ -23,6 +23,10 @@ margin_left = 211.0
 margin_top = 110.0
 margin_right = 294.0
 margin_bottom = 189.0
+
+[node name="info" type="PopupMenu" parent="."]
+margin_right = 20.0
+margin_bottom = 20.0
 [connection signal="item_selected" from="." to="." method="_on_inventory_item_selected"]
 [connection signal="index_pressed" from="PopupMenu" to="." method="_on_PopupMenu_index_pressed"]
 [connection signal="popup_hide" from="PopupMenu" to="." method="_on_PopupMenu_popup_hide"]

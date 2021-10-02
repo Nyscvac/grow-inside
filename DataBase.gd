@@ -6,7 +6,7 @@ var weapons = {
 	0 : {
 		"id" : 0,
 		"icon" : "res://sprites/wep1.png",
-		"name" : "Energy rifle",
+		"name" : "energy_rifle",
 		"scene" : "res://scenes/weapons/wep1.tscn"
 		},
 	1 : {
@@ -14,13 +14,13 @@ var weapons = {
 		"icon" : "res://sprites/wep2.png",
 		"name" : "heavy_pistol",
 		"scene" : "res://scenes/weapons/wep2.tscn"
-		},
-	2 : {
-		"id" : 2,
-		"icon" : "res://sprites/enemy_3_ready.png",
-		"name" : "heavy_pistol",
-		"scene" : "res://scenes/weapons/wep3.tscn"
 		}
+#	2 : {
+#		"id" : 2,
+#		"icon" : "",
+#		"name" : "none",
+#		"scene" : "res://scenes/weapons/wep3.tscn"
+#		}
 }
 
 var entities = {
@@ -69,8 +69,18 @@ var resources = {
 		"id" : 0,
 		"icon" : "res://sprites/seed1.png",
 		"name" : "common_seed",
-		"scene" : "res://scenes/entities/bullet2.tscn",
-		"stack_size" : 99
+		"stack_size" : 20
+		}
+
+}
+
+var consumable = {
+	0 : {
+		"id" : 0,
+		"icon" : "res://sprites/medkit.png",
+		"name" : "medkit",
+		"stack_size" : 10,
+		"effect" : "medkit_use"
 		}
 }
 
@@ -79,8 +89,15 @@ var accessories = {
 		"id" : 0,
 		"icon" : "res://sprites/rebar_boots.png",
 		"name" : "rebar_boots",
-		"scene" : "res://scenes/entities/bullet2.tscn",
+		"effect" : "rebar_boots_eff"
+		},
+	1 : {
+		"id" : 1,
+		"icon" : "res://sprites/bio_energy_core.png",
+		"name" : "bio_energy_core",
+		"effect" : "bio_energy_core_eff"
 		}
+	
 }
 
 var enemies = {
@@ -118,13 +135,15 @@ var enemies = {
 var item_actions = {
 	"accessories" : ["equip", "delete", "info"],
 	"resources" : ["delete", "info"],
-	"weapons" : ["equip", "delete"]  
+	"weapons" : ["equip", "delete"],
+	"consumable" : ["use", "delete", "info"]  
 	
 }
 var item_actions_hub = {
 	"accessories" : ["equip", "delete", "put", "info"], 
 	"resources" : ["delete", "put", "info"],
-	"weapons" : ["equip", "delete", "put", "info"]  
+	"weapons" : ["equip", "delete", "put", "info"],
+	"consumable" : ["use", "put", "delete", "info"]    
 	
 }
 

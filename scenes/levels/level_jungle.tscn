@@ -105,27 +105,6 @@ position = Vector2( 762.835, -280.921 )
 [node name="skaner4" parent="." instance=ExtResource( 2 )]
 position = Vector2( 161.189, 516.132 )
 
-[node name="item_drop" parent="." instance=ExtResource( 5 )]
-position = Vector2( 67.2266, 130.309 )
-Id = 0
-Type = "weapons"
-
-[node name="item_drop2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 103.172, 109.658 )
-Id = 1
-Type = "weapons"
-
-[node name="item_drop3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 84.678, 172.185 )
-Id = 2
-Type = "weapons"
-
-[node name="item_drop4" parent="." instance=ExtResource( 5 )]
-position = Vector2( 116.587, 143.259 )
-Id = 0
-Type = "resources"
-Amount = 3
-
 [node name="UI" parent="." instance=ExtResource( 6 )]
 
 [node name="distance_label" parent="UI" instance=ExtResource( 10 )]
@@ -142,10 +121,22 @@ position = Vector2( 20.1724, 132.898 )
 position = Vector2( 942.98, 434.369 )
 
 [node name="flower2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 661.094, 253.344 )
+position = Vector2( 141.094, 143.344 )
 
 [node name="flower3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 239.04, 112.023 )
+position = Vector2( 67.0397, 126.023 )
+
+[node name="flower7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 859.04, 673.023 )
+
+[node name="flower8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 91.0397, 66.0234 )
+
+[node name="flower9" parent="." instance=ExtResource( 3 )]
+position = Vector2( 977.04, 643.023 )
+
+[node name="flower10" parent="." instance=ExtResource( 3 )]
+position = Vector2( 176.04, 77.0234 )
 
 [node name="flower6" parent="." instance=ExtResource( 3 )]
 position = Vector2( 258.518, -34.8107 )
@@ -155,3 +146,21 @@ position = Vector2( 1172.94, 855.566 )
 
 [node name="flower5" parent="." instance=ExtResource( 3 )]
 position = Vector2( 215.657, 488.911 )
+
+[node name="item_drop" parent="." instance=ExtResource( 5 )]
+position = Vector2( 177.46, 154.152 )
+Id = 0
+Type = "accessories"
+Amount = 1
+
+[node name="item_drop2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 173.256, 111.266 )
+Id = 1
+Type = "accessories"
+Amount = 1
+
+[node name="item_drop3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 232.747, 122.491 )
+Id = 0
+Type = "consumable"
+Amount = 1
